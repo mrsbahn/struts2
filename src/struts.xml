@@ -4,8 +4,16 @@
     "http://struts.apache.org/dtds/struts-2.0.dtd">
 
 <struts>
-	<package name="default" namespace="/tutor" extends="struts-default"  >
-		<action name="getTuturial" class="de.tut.action.TutAction" method="newMethod">
+	<include file="login.xml" />
+
+	<package name="default" namespace="/tutor" extends="struts-default">
+		<action name="getTut" class="de.tut.action.TutAction"
+			method="getTut">
+			<result name="success">/success.jsp</result>
+			<result name="failure">/error.jsp</result>
+		</action>
+		<action name="addTut" class="de.tut.action.TutAction"
+			method="addTut">
 			<result name="success">/success.jsp</result>
 			<result name="failure">/error.jsp</result>
 		</action>
@@ -13,13 +21,13 @@
 
 
 	<package name="search" namespace="/" extends="struts-default">
-	
-			<action name="search*" >
-			<result >/search{1}.jsp</result>			
+
+		<action name="search*">
+			<result>/search{1}.jsp</result>
 		</action>
 	</package>
 
-	<include file="login.xml"/>
+
 
 
 </struts>    

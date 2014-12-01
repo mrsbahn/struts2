@@ -22,16 +22,24 @@ public class TutAction {
 		this.language = language;
 	}
 
-	public String execute() {
-		TutFinderService tutObj = new TutFinderService();
-		 
-		setBestTut(tutObj.getBestTutSite(getLanguage()));
-		System.out.println("execute() method is executed!");
+//	public String execute() {
+//		TutFinderService tutObj = new TutFinderService();
+//		 
+//		setBestTut(tutObj.getBestTutSite(getLanguage()));
+//		System.out.println("execute() method is executed!");
+//		return Action.SUCCESS;
+//	}
+//	
+	public String getTut() {
+//		TutFinderService tutObj = new TutFinderService();
+//		 
+//		setBestTut(tutObj.getBestTutSite(getLanguage()));
+		System.out.println("getTut method is executed!");
 		return Action.SUCCESS;
 	}
 	
-	public String newMethod(){
-		System.out.println("newMethod() method is executed!");
+	public String addTut(){
+		System.out.println("AddTut method is executed!");
 		return Action.SUCCESS;
 	}
 
