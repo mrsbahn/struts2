@@ -7,16 +7,12 @@
 	<include file="login.xml" />
 
 	<package name="default" namespace="/tutor" extends="struts-default">
-		<action name="getTut" class="de.tut.action.TutAction"
-			method="getTut">
+		<action name="*" class="de.tut.action.TutAction"
+			method="{1}">
 			<result name="success">/success.jsp</result>
 			<result name="failure">/error.jsp</result>
 		</action>
-		<action name="addTut" class="de.tut.action.TutAction"
-			method="addTut">
-			<result name="success">/success.jsp</result>
-			<result name="failure">/error.jsp</result>
-		</action>
+		 
 	</package>
 
 
