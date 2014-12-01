@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="default" namespace="/tutor" extends="struts-default"  >
+		<action name="getTuturial" class="de.tut.action.TutAction" method="newMethod">
+			<result name="success">/success.jsp</result>
+			<result name="failure">/error.jsp</result>
+		</action>
+	</package>
+
+
+	<package name="search" namespace="/" extends="struts-default">
+	
+			<action name="search*" >
+			<result >/search{1}.jsp</result>			
+		</action>
+	</package>
+
+	<include file="login.xml"/>
+
+
+</struts>    
+ 
