@@ -4,64 +4,68 @@ import org.apache.commons.lang3.StringUtils;
 
 import com.opensymphony.xwork2.Action;
 import com.opensymphony.xwork2.ActionSupport;
+ 
 
-import freemarker.template.utility.StringUtil;
+import com.opensymphony.xwork2.ModelDriven;
 
-public class LoginAction extends ActionSupport {
+import de.stut.service.LoginService;
+import de.tut.model.User;
 
-	private String userId;
-	private String password;
+public class LoginAction extends ActionSupport  implements ModelDriven<User> {
+
+
+	private User user= new User();
+
+	/**
+	 * @return the user
+	 */
+	public User getUser() {
+		return user;
+	}
+
+	/**
+	 * @param user the user to set
+	 */
+	public void setUser(User user) {
+		this.user = user;
+	}
 
 	public void validate() {
-		if (StringUtils.isEmpty(this.getUserId())) {
+		if (StringUtils.isEmpty(this.user.getUserId())) {
 			// user id is blank
-			addFieldError("userId","User Id cannot be blank");
+			addFieldError("userId", "User Id cannot be blank");
 
 		}
-		if (StringUtils.isEmpty(this.getPassword())) {
-			//password is blank
-			addFieldError("password","Password Id cannot be blank");
+		if (StringUtils.isEmpty(this.user.getPassword())) {
+			// password is blank
+			addFieldError("password", "Password Id cannot be blank");
 
 		}
 
 	}
 
-	/**
-	 * @return the userId
-	 */
-	public String getUserId() {
-		return userId;
-	}
+ 
 
-	/**
-	 * @param userId
-	 *            the userId to set
-	 */
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
-
-	/**
-	 * @return the password
-	 */
-	public String getPassword() {
-		return password;
-	}
-
-	/**
-	 * @param password
-	 *            the password to set
-	 */
-	public void setPassword(String password) {
-		this.password = password;
-	}
+ 
 
 	public String execute() {
-		if (getUserId().equals("userId") && getPassword().equals("password")) {
-			return "success";
+
+		LoginService loginService = new LoginService();
+
+		 
+
+		if (loginService.verifyLogin(user)) {
+			return Action.SUCCESS;
 		} else {
 			return Action.LOGIN;
 		}
+
+	}
+
+	@Override
+	public User getModel() {
+		// TODO Auto-generated method stub
+		return user;
 	}
 
 }
